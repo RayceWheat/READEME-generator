@@ -62,9 +62,11 @@ const questions = [
         type: 'list',
         name: 'license',
         choices: [
-            'Apache license 2.0',
-            'MIT License',
-            'GNU General Public License v3.0',
+            '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)',
+            '[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)',
+            '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)',
+            '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)',
+            '[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)'
         ],
         validate: licenseInput => {
             if (licenseInput) {
@@ -144,16 +146,17 @@ Questions
 
 const deconstructInput = (projectData) => {
     console.log(projectData);
-    const { title, description, installation,  usage, contribution, license, github, email} = projectData;
+    const { title, description, installation,  usage, contribution, license, github, email, tests} = projectData;
 
     console.log(license);
 
 return`# ${title}
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-
 ## Description
+${license}
+
 ${description}
+
 
 ## Table of Contents
 * [Installation](#installation)
@@ -170,8 +173,11 @@ ${usage}
 ## Contribution
 ${contribution}
 
+## Test 
+${tests}
+
 ## License
-${license}
+This project is covered under ${license}
 
 ## Questions
 Questions may be directred at either ${github} or ${email}. 
